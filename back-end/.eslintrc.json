@@ -1,6 +1,6 @@
 {
   "env": {
-    "es2020": true,
+    "es6": true,
     "node": true,
     "jest": true
   },
@@ -29,12 +29,6 @@
       "error",
       {
         "argsIgnorePattern": "_"
-      }
-    ],
-    "@typescript-eslint/interface-name-prefix": [
-      "error",
-      {
-        "prefixWithI": "always"
       }
     ],
     "import/extensions": [
