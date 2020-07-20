@@ -22,7 +22,7 @@ class CreateUserService {
 
     if (email_domain !== process.env.EMAIL_DOMAIN) {
       throw new AppError(
-        `This email domain is invalid. Its obrigatory email with ${process.env.EMAIL_DOMAIN} domain`,
+        `This email is invalid. You must inform an email with ${process.env.EMAIL_DOMAIN} domain`,
       );
     }
 
