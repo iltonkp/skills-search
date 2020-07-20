@@ -7,7 +7,7 @@ import User from '../infra/typeorm/entities/User';
 interface IRequest {
   name: string;
   email: string;
-  password: string
+  password: string;
 }
 
 @injectable()
@@ -15,23 +15,24 @@ class CreateUserService {
   constructor(
     @inject('UsersRepository')
     private usersRepository: IUsersRepository,
-  ) { }
+  ) {}
 
   public async execute({ name, email, password }: IRequest): Promise<User> {
-    const email_domain = email.substring(email.lastIndexOf("@") + 1);
+    const email_domain = email.substring(email.lastIndexOf('@') + 1);
 
     if (email_domain !== process.env.EMAIL_DOMAIN) {
-      throw new AppError(`This email domain is invalid. Its obrigatory email with ${process.env.EMAIL_DOMAIN} domain`);
+      throw new AppError(
+        `This email domain is invalid. Its obrigatory email with ${process.env.EMAIL_DOMAIN} domain`,
+      );
     }
 
     const user = await this.usersRepository.create({
       name,
       email,
-      password
+      password,
     });
 
     return user;
   }
-
 }
 export default CreateUserService;
