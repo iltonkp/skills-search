@@ -14,9 +14,12 @@ class UsersRepository implements IUsersRepository {
     const user = this.ormRepository.create(data);
     await this.ormRepository.save(user);
     return user;
-
   }
 
+  public async findByEmail(email: string): Promise<User | undefined> {
+    const user = this.ormRepository.findOne({ where: { email } });
+    return user;
+  }
 }
 
-export default UsersRepository
+export default UsersRepository;
